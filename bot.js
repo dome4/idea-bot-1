@@ -1,7 +1,5 @@
 const { RTMClient } = require('@slack/client');
-
-// An access token (from your Slack app or custom integration - usually xoxb)
-const token = 'xoxb-361900915170-O05v4IOVXaPcyCIsM35HNJEK';
+const env = require('./env/environment');
 
 // init sqlite db
 var fs = require('fs');
@@ -32,7 +30,7 @@ db.serialize(function(){
 });
 
 // The client is initialized and then started to get an active connection to the platform
-const rtm = new RTMClient(token);
+const rtm = new RTMClient(env.SLACK_TOKEN);
 rtm.start();
 
 
